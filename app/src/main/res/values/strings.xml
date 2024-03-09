@@ -3,4 +3,6 @@
     <string name="poto">poto</string>
     <string name="price">price</string>
     <string name="desc">desc...</string>
+    <string name="title_favotite">Favorite</string>
+    <string name="title_fav">Module Title</string>
 </resources>

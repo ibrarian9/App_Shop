@@ -1,4 +1,4 @@
-package com.app.capstone.fav
+package com.app.fav
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

@@ -19,9 +19,6 @@
             android:name=".detail.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".fav.FavoriteActivity"
-            android:exported="false" />
-        <activity
             android:name=".main.MainActivity"
             android:exported="true">
             <intent-filter>

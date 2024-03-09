@@ -3,13 +3,13 @@ package com.app.capstone.main
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.capstone.core.data.Resource
 import com.app.capstone.core.ui.ProductsAdapter
 import com.app.capstone.databinding.ActivityMainBinding
 import com.app.capstone.detail.DetailActivity
-import com.app.capstone.fav.FavoriteActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +30,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         bind.fav.setOnClickListener {
-            startActivity(Intent(this, FavoriteActivity::class.java))
+            try {
+                startActivity(Intent(this, Class.forName("com.app.fav.FavoriteActivity")))
+            } catch (e: Exception) {
+                Toast.makeText(this, "Module tidak ditemukan", Toast.LENGTH_SHORT).show()
+            }
         }
 
         mainViewModel.product.observe(this){

@@ -1,4 +1,4 @@
-package com.app.capstone.fav
+package com.app.fav
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,9 +9,10 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.capstone.R
 import com.app.capstone.core.ui.ProductsAdapter
-import com.app.capstone.databinding.ActivityFavoriteBinding
 import com.app.capstone.detail.DetailActivity
+import com.app.fav.databinding.ActivityFavoriteBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.loadKoinModules
 
 class FavoriteActivity : AppCompatActivity() {
 
@@ -22,13 +23,9 @@ class FavoriteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bind = ActivityFavoriteBinding.inflate(layoutInflater)
-        enableEdgeToEdge()
         setContentView(bind.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        loadKoinModules(favModule)
 
         productsAdapter.onItemClick = {
             val i = Intent(this, DetailActivity::class.java)

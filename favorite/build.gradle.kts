@@ -1,23 +1,16 @@
 plugins {
-    id("com.android.application")
+    id("com.android.dynamic-feature")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-parcelize")
-    id("com.google.devtools.ksp")
 }
 
 apply(from = "../shared_dependencies.gradle")
 
 android {
-    namespace = "com.app.capstone"
+    namespace = "com.app.favotite"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.app.capstone"
         minSdk = 28
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -30,18 +23,17 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
     buildFeatures {
         viewBinding = true
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    dynamicFeatures += setOf(":fav")
 }
+
 dependencies {
     implementation(project(":core"))
+    implementation(project(":app"))
+    implementation("androidx.core:core-ktx:1.12.0")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.annotation:annotation:1.6.0")
 }

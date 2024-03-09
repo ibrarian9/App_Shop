@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".fav.FavoriteActivity">
+    tools:context="com.app.favorite.fav.FavoriteActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
