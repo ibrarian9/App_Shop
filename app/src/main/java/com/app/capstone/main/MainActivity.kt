@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.capstone.core.data.Resource
 import com.app.capstone.core.ui.ProductsAdapter
 import com.app.capstone.databinding.ActivityMainBinding
+import com.app.capstone.detail.DetailActivity
 import com.app.capstone.fav.FavoriteActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,6 +22,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(saved)
         bind = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bind.root)
+
+        productsAdapter.onItemClick = {
+            val i = Intent(this, DetailActivity::class.java)
+            i.putExtra(DetailActivity.EXTRA, it)
+            startActivity(i)
+        }
 
         bind.fav.setOnClickListener {
             startActivity(Intent(this, FavoriteActivity::class.java))

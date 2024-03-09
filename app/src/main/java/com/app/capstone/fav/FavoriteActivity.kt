@@ -1,5 +1,6 @@
 package com.app.capstone.fav
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.capstone.R
 import com.app.capstone.core.ui.ProductsAdapter
 import com.app.capstone.databinding.ActivityFavoriteBinding
+import com.app.capstone.detail.DetailActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoriteActivity : AppCompatActivity() {
@@ -28,8 +30,13 @@ class FavoriteActivity : AppCompatActivity() {
             insets
         }
 
+        productsAdapter.onItemClick = {
+            val i = Intent(this, DetailActivity::class.java)
+            i.putExtra(DetailActivity.EXTRA, it)
+            startActivity(i)
+        }
+
         favViewModel.favoriteProduct.observe(this){
-            println(it)
             if (it != null){
                 productsAdapter.setData(it)
             }

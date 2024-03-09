@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
     id("com.google.devtools.ksp")
@@ -8,17 +8,14 @@ plugins {
 apply(from = "../shared_dependencies.gradle")
 
 android {
-    namespace = "com.app.capstone"
+    namespace = "com.app.core"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.app.capstone"
         minSdk = 28
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -41,7 +38,18 @@ android {
         jvmTarget = "1.8"
     }
 }
+
+val retrofitVer = "2.9.0"
+
 dependencies {
 
-    implementation(project(":core"))
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVer")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVer")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    // Room
+    implementation("androidx.room:room-runtime:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
+    androidTestImplementation("androidx.room:room-testing:2.6.1")
 }

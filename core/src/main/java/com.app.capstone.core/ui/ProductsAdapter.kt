@@ -1,17 +1,16 @@
 package com.app.capstone.core.ui
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.capstone.core.domain.model.MyProduct
-import com.app.capstone.databinding.ListItemBinding
-import com.app.capstone.detail.DetailActivity
+import com.app.core.databinding.ListItemBinding
 import com.squareup.picasso.Picasso
 
 class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ListViewHolder>() {
 
     private var listData = ArrayList<MyProduct>()
+    var onItemClick: ((MyProduct) -> Unit)? = null
 
     fun setData(newData: List<MyProduct>?) {
         if (newData == null) return
@@ -27,13 +26,13 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ListViewHolder>() {
                laptop.text = dataList.title
                desc.text = dataList.description
                harga.text = dataList.price
-
-               itemView.setOnClickListener {
-                   val i = Intent(it.context, DetailActivity::class.java)
-                   i.putExtra("ExtraData", dataList)
-                   it.context.startActivity(i)
-               }
            }
+        }
+
+        init {
+            bind.root.setOnClickListener {
+                onItemClick?.invoke(listData[bindingAdapterPosition])
+            }
         }
     }
 

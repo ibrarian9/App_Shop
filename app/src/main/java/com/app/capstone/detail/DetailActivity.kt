@@ -17,6 +17,10 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var bind: ActivityDetailBinding
     private val detailProductViewModel: DetailViewModel by viewModel()
 
+    companion object {
+        const val EXTRA = "extraData"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -28,7 +32,7 @@ class DetailActivity : AppCompatActivity() {
             insets
         }
 
-        val detailProduct = intent.getParcelableExtra<MyProduct>("ExtraData")
+        val detailProduct = intent.getParcelableExtra<MyProduct>(EXTRA)
         setDataProduct(detailProduct)
     }
 
@@ -45,7 +49,6 @@ class DetailActivity : AppCompatActivity() {
                 detailProductViewModel.setFavorite(detailProduct, statusFav)
                 setStatus(statusFav)
             }
-
         }
     }
 
