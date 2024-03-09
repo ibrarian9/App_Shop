@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         bind.fav.setOnClickListener {
             try {
-                startActivity(Intent(this, Class.forName("com.app.fav.FavoriteActivity")))
+                startActivity(Intent(this, Class.forName("com.app.fav.favorite.FavoriteActivity")))
             } catch (e: Exception) {
                 Toast.makeText(this, "Module tidak ditemukan", Toast.LENGTH_SHORT).show()
             }
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                     is Resource.Loading -> bind.progressBar.visibility = View.VISIBLE
                     is Resource.Success -> {
                         bind.progressBar.visibility = View.GONE
-                        productsAdapter.setData(it.data)
+                        productsAdapter.submitList(it.data)
                     }
 
                     is Resource.Error -> {

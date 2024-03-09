@@ -10,9 +10,6 @@ data class ProductsItem(
     @field:SerializedName("price")
 	val price: String,
 
-    @field:SerializedName("rating")
-	val rating: Rating,
-
     @field:SerializedName("description")
 	val description: String,
 
@@ -24,13 +21,4 @@ data class ProductsItem(
 
     @field:SerializedName("category")
 	val category: String
-)
-
-data class Rating(
-
-	@field:SerializedName("rate")
-	val rate: Double,
-
-	@field:SerializedName("count")
-	val count: Int
 )

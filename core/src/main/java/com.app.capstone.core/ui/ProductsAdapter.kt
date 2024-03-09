@@ -2,36 +2,42 @@ package com.app.capstone.core.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.app.capstone.core.domain.model.MyProduct
 import com.app.core.databinding.ListItemBinding
 import com.squareup.picasso.Picasso
 
-class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ListViewHolder>() {
+class ProductsAdapter : ListAdapter<MyProduct, ProductsAdapter.ListViewHolder>(DiffCallback) {
 
-    private var listData = ArrayList<MyProduct>()
     var onItemClick: ((MyProduct) -> Unit)? = null
 
-    fun setData(newData: List<MyProduct>?) {
-        if (newData == null) return
-        listData.clear()
-        listData.addAll(newData)
-        notifyDataSetChanged()
+    companion object {
+        private val DiffCallback = object : DiffUtil.ItemCallback<MyProduct>() {
+            override fun areItemsTheSame(oldItem: MyProduct, newItem: MyProduct): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: MyProduct, newItem: MyProduct): Boolean {
+                return oldItem == newItem
+            }
+        }
     }
 
     inner class ListViewHolder(private val bind: ListItemBinding): RecyclerView.ViewHolder(bind.root) {
         fun binding(dataList: MyProduct) {
-           with(bind) {
-               Picasso.get().load(dataList.image).fit().into(image)
-               laptop.text = dataList.title
-               desc.text = dataList.description
-               harga.text = dataList.price
-           }
+            with(bind) {
+                Picasso.get().load(dataList.image).fit().into(image)
+                laptop.text = dataList.title
+                desc.text = dataList.description
+                harga.text = dataList.price
+            }
         }
 
         init {
             bind.root.setOnClickListener {
-                onItemClick?.invoke(listData[bindingAdapterPosition])
+                onItemClick?.invoke(getItem(bindingAdapterPosition))
             }
         }
     }
@@ -41,10 +47,8 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ListViewHolder>() {
         return ListViewHolder(bind)
     }
 
-    override fun getItemCount(): Int = listData.size
-
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val dataList = listData[position]
+        val dataList = getItem(position)
         holder.binding(dataList)
     }
 }

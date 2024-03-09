@@ -39,17 +39,21 @@ android {
     }
 }
 
-val retrofitVer = "2.9.0"
+
 
 dependencies {
+
+    val retrofitVer = "2.9.0"
+    val loggingVer = "4.12.0"
+    val roomVer = "2.6.1"
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:$retrofitVer")
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVer")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:$loggingVer")
 
     // Room
-    implementation("androidx.room:room-runtime:2.6.1")
-    ksp("androidx.room:room-compiler:2.6.1")
-    androidTestImplementation("androidx.room:room-testing:2.6.1")
+    implementation("androidx.room:room-runtime:$roomVer")
+    ksp("androidx.room:room-compiler:$roomVer")
+    androidTestImplementation("androidx.room:room-testing:$roomVer")
 }

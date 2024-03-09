@@ -30,13 +30,13 @@ object DataMapper {
                 description = it.description,
                 image = it.image,
                 price = it.price,
-                rating = null,
                 title = it.title,
                 isFavorite = it.isFavorite
             )
         }
 
-    fun mapDomainToEntity(input: MyProduct) = ProductEntity(
+    fun mapDomainToEntity(input: MyProduct) =
+        ProductEntity(
         id = input.id,
         category = input.category,
         description = input.description,

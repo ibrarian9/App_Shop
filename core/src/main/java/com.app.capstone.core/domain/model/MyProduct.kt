@@ -12,19 +12,7 @@ data class MyProduct(
     val description: String,
     val image: String,
     val price: String,
-    val rating: Rating?,
     val title: String,
     val isFavorite: Boolean
-
-): Parcelable
-
-@Parcelize
-data class Rating(
-
-    @field:SerializedName("rate")
-    val rate: Double,
-
-    @field:SerializedName("count")
-    val count: Int
 
 ): Parcelable

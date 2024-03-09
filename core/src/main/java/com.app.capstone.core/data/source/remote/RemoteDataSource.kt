@@ -4,13 +4,16 @@ import android.util.Log
 import com.app.capstone.core.data.source.remote.network.ApiResponse
 import com.app.capstone.core.data.source.remote.network.ApiService
 import com.app.capstone.core.data.source.remote.response.ProductsItem
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class RemoteDataSource(private val api: ApiService) {
-
+class RemoteDataSource(
+    private val api: ApiService,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+) {
     suspend fun getAllProduct(): Flow<ApiResponse<List<ProductsItem>>> {
         return flow {
             try {
@@ -24,6 +27,6 @@ class RemoteDataSource(private val api: ApiService) {
                 emit(ApiResponse.Error(e.toString()))
                 Log.e("RemoteDataSource", e.toString())
             }
-        }.flowOn(Dispatchers.IO)
+        }.flowOn(ioDispatcher)
     }
 }

@@ -1,16 +1,13 @@
-package com.app.fav
+package com.app.fav.favorite
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.app.capstone.R
 import com.app.capstone.core.ui.ProductsAdapter
 import com.app.capstone.detail.DetailActivity
 import com.app.fav.databinding.ActivityFavoriteBinding
+import com.app.fav.di.favModule
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 
@@ -34,15 +31,13 @@ class FavoriteActivity : AppCompatActivity() {
         }
 
         favViewModel.favoriteProduct.observe(this){
-            if (it != null){
-                productsAdapter.setData(it)
-            }
+            productsAdapter.submitList(it)
         }
 
         bind.rv.let {
             it.layoutManager = LinearLayoutManager(this)
+            it.setHasFixedSize(true)
             it.adapter = productsAdapter
         }
-
     }
 }
