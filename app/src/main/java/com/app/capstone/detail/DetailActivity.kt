@@ -1,7 +1,9 @@
 package com.app.capstone.detail
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.app.capstone.R
@@ -15,17 +17,14 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var bind: ActivityDetailBinding
     private val detailProductViewModel: DetailViewModel by viewModel()
 
-    companion object {
-        const val EXTRA = "extraData"
-    }
-
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         bind = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(bind.root)
 
-        val detailProduct = intent.getParcelableExtra<MyProduct>(EXTRA)
+        val detailProduct = intent.getParcelableExtra(EXTRA, MyProduct::class.java)
         setDataProduct(detailProduct)
     }
 
@@ -50,5 +49,9 @@ class DetailActivity : AppCompatActivity() {
         } else {
             bind.fav.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.baseline_star_outline_24))
         }
+    }
+
+    companion object {
+        const val EXTRA = "extra"
     }
 }

@@ -18,6 +18,7 @@ ext {
     coroutines_version = '1.8.0'
     room_version = '2.6.1'
     lifecycle_version = '2.7.0'
+    leakCanary_version = '2.10'
 }
 
 dependencies {
@@ -51,4 +52,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version")
     implementation("androidx.room:room-ktx:$room_version")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+
+    // leak Canary
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:$leakCanary_version")
 }

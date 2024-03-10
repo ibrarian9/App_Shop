@@ -2,5 +2,6 @@
     <string name="app_name">Capstone</string>
     <string name="poto">poto</string>
     <string name="price">price</string>
-    <string name="desc">desc...</string>
+    <string name="desc">desc…</string>
+    <string name="laptop">LAPTOP</string>
 </resources>

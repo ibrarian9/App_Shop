@@ -2,11 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context="com.app.favorite.fav.FavoriteActivity">
+    tools:context="com.app.fav.favorite.FavoriteActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -22,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Favorit List"
+            android:text="@string/favorit_list"
             android:textColor="@color/black"
             android:textSize="15sp" />
 

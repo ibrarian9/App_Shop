@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".detail.DetailActivity">
 
     <ImageView
@@ -16,14 +15,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/imageContent" />
 
     <TextView
         android:id="@+id/judul"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:text="Judul"
+        android:text="@string/judul"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -35,7 +34,7 @@
         android:id="@+id/desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="text"
+        android:text="@string/desc"
         android:textColor="@color/black"
         android:textSize="15sp"
         android:padding="20dp"
@@ -52,6 +51,6 @@
         android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="@+id/foto"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/addFavContent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

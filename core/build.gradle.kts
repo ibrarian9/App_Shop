@@ -13,14 +13,13 @@ android {
 
     defaultConfig {
         minSdk = 28
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -28,24 +27,24 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     buildFeatures {
         viewBinding = true
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
-
-
 
 dependencies {
 
     val retrofitVer = "2.9.0"
     val loggingVer = "4.12.0"
     val roomVer = "2.6.1"
+    val sqlChiperVer = "4.4.0"
+    val sqlVer = "2.4.0"
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:$retrofitVer")
@@ -56,4 +55,8 @@ dependencies {
     implementation("androidx.room:room-runtime:$roomVer")
     ksp("androidx.room:room-compiler:$roomVer")
     androidTestImplementation("androidx.room:room-testing:$roomVer")
+
+    // Sqlchiper
+    implementation("net.zetetic:android-database-sqlcipher:$sqlChiperVer")
+    implementation("androidx.sqlite:sqlite-ktx:$sqlVer")
 }

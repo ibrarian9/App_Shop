@@ -2,7 +2,14 @@
     <string name="app_name">Capstone</string>
     <string name="poto">poto</string>
     <string name="price">price</string>
-    <string name="desc">desc...</string>
-    <string name="title_favotite">Favorite</string>
+    <string name="desc">desc…</string>
     <string name="title_fav">Module Title</string>
+    <string name="power_disconnected">Power Disconnected</string>
+    <string name="power_connected">Power Connected</string>
+    <string name="err_msg">Error Brohh!!!</string>
+    <string name="list_barang">List Barang</string>
+    <string name="favContent">Button to Intent FavoriteActivity</string>
+    <string name="imageContent">Image for Detail</string>
+    <string name="judul">Judul</string>
+    <string name="addFavContent">Button to add favorite</string>
 </resources>

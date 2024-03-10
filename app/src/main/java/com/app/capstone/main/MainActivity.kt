@@ -1,11 +1,15 @@
 package com.app.capstone.main
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.app.capstone.R
 import com.app.capstone.core.data.Resource
 import com.app.capstone.core.ui.ProductsAdapter
 import com.app.capstone.databinding.ActivityMainBinding
@@ -15,8 +19,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : AppCompatActivity() {
 
     private lateinit var bind: ActivityMainBinding
+    private lateinit var broadcastReceiver: BroadcastReceiver
     private val productsAdapter = ProductsAdapter()
     private val mainViewModel: MainViewModel by viewModel()
+
+    override fun onStart() {
+        super.onStart()
+        broadcastReceiver()
+    }
 
     override fun onCreate(saved: Bundle?) {
         super.onCreate(saved)
@@ -62,5 +72,34 @@ class MainActivity : AppCompatActivity() {
             it.adapter = productsAdapter
         }
 
+    }
+
+    private fun broadcastReceiver() {
+        broadcastReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                when (intent.action) {
+                    Intent.ACTION_POWER_CONNECTED -> {
+                        bind.power.text = getString(R.string.power_connected)
+                    }
+                    Intent.ACTION_POWER_DISCONNECTED -> {
+                        bind.power.text = getString(R.string.power_disconnected)
+                    }
+                }
+            }
+
+        }
+
+        val intentFilter = IntentFilter()
+        intentFilter.apply {
+            addAction(Intent.ACTION_POWER_CONNECTED)
+            addAction(Intent.ACTION_POWER_DISCONNECTED)
+        }
+
+        registerReceiver(broadcastReceiver, intentFilter)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        unregisterReceiver(broadcastReceiver)
     }
 }

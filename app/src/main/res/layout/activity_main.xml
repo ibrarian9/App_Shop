@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".main.MainActivity">
 
     <RelativeLayout
@@ -18,10 +18,23 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/power"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="List Barang"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:layout_toStartOf="@+id/textView"
+            android:text="@string/power_disconnected"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:text="@string/list_barang"
             android:textColor="@color/black"
             android:textSize="15sp" />
 
@@ -31,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:src="@drawable/baseline_bookmarks_24"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/favContent" />
 
     </RelativeLayout>
 
@@ -47,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <ProgressBar
-        android:id="@+id/progress_bar"
+        android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

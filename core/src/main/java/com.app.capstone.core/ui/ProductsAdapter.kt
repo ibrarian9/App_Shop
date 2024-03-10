@@ -34,7 +34,6 @@ class ProductsAdapter : ListAdapter<MyProduct, ProductsAdapter.ListViewHolder>(D
                 harga.text = dataList.price
             }
         }
-
         init {
             bind.root.setOnClickListener {
                 onItemClick?.invoke(getItem(bindingAdapterPosition))
