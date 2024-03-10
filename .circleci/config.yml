@@ -6,10 +6,16 @@ orbs:
 jobs:
   build:
     executor: android/android
+    environment:
+      ANDROID_HOME: $HOME/moriartyy/android/sdk  
     steps:
       - checkout
       - restore_cache:
           key: android-orb-v1-
+      - run:
+          name: Setup Android SDK and local.properties
+          command: |
+            echo "sdk.dir=$ANDROID_HOME" > local.properties
       - run:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew
