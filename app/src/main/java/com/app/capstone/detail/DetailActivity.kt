@@ -17,14 +17,13 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var bind: ActivityDetailBinding
     private val detailProductViewModel: DetailViewModel by viewModel()
 
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         bind = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(bind.root)
 
-        val detailProduct = intent.getParcelableExtra(EXTRA, MyProduct::class.java)
+        val detailProduct = intent.getParcelableExtra<MyProduct>(EXTRA)
         setDataProduct(detailProduct)
     }
 
