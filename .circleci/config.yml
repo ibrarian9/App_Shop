@@ -12,11 +12,13 @@ jobs:
       - restore_cache:
           key: android-orb-v1-
       - run:
-          name: Setup Java 17
+          name: Install and Set Java 17
           command: |
             sudo apt-get update
             sudo apt-get install -y openjdk-17-jdk
-            sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+            echo 'export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64' >> $BASH_ENV
+            echo 'export PATH=$JAVA_HOME/bin:$PATH' >> $BASH_ENV
+            source $BASH_ENV
             java -version
       - run:
           name: Setup Android SDK and local.properties
