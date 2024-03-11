@@ -2,11 +2,11 @@ version: 2.1
 
 orbs:
   android: circleci/android@2.4.0
-
+ 
 jobs:
   build:
-    machine:
-      image: android:default
+    machine: 
+        image: android:default
     resource_class: large
     steps:
       - checkout
@@ -39,7 +39,7 @@ jobs:
       - run:
           name: Run Build
           command: ./gradlew build
-      - store_artifacts:
+      - store_artifacts: 
           path: app/build/reports
           destination: reports
       - run:
@@ -47,6 +47,6 @@ jobs:
           command: ./gradlew lint test
       - store_test_results:
           path: app/build/test-results
-      - store_artifacts:
+      - store_artifacts:  
           path: app/build/outputs/apk/debug/
           destination: artifact-file
