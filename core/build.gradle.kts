@@ -11,10 +11,6 @@ android {
     namespace = "com.app.core"
     compileSdk = 34
 
-    lint {
-        baseline = file("lint-baseline.xml")
-    }
-
     defaultConfig {
         minSdk = 28
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
