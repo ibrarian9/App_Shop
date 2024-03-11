@@ -11,6 +11,10 @@ android {
     namespace = "com.app.capstone"
     compileSdk = 34
 
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
+
     defaultConfig {
         applicationId = "com.app.capstone"
         minSdk = 28
