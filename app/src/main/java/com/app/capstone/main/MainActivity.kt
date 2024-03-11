@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         bind.fav.setOnClickListener {
             try {
-                startActivity(Intent(this, Class.forName("com.app.fav.favorite.FavoriteActivity")))
+                startActivity(Intent(this@MainActivity, Class.forName("com.app.fav.favorite.FavoriteActivity")))
             } catch (e: Exception) {
                 Toast.makeText(this, "Module tidak ditemukan", Toast.LENGTH_SHORT).show()
             }

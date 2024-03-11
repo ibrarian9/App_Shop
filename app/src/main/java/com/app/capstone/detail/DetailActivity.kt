@@ -1,9 +1,6 @@
 package com.app.capstone.detail
 
-import android.os.Build
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.app.capstone.R
@@ -19,7 +16,6 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         bind = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(bind.root)
 
