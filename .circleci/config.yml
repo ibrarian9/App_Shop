@@ -5,7 +5,7 @@ orbs:
 jobs:
   build:
     machine: 
-        image: android:202102-01
+        image: android:default
     resource_class: large
     steps:
       - checkout
