@@ -1,11 +1,12 @@
 version: 2.1
- 
 orbs:
   android: circleci/android@2.4.0
  
 jobs:
   build:
-    executor: android/android
+    machine: 
+        image: android:202102-01
+    resource_class: large
     steps:
       - checkout
       - restore_cache:
